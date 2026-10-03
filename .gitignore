@@ -1,4 +1,4 @@
-/myenv
+/env
 /pycache__/
 .env
 /.env
@@ -8,3 +8,5 @@ credentials.json
 token.json
 
 .env
+
+env/
