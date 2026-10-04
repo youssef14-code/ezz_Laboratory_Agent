@@ -180,7 +180,7 @@ class LaboratoryService:
             lab = Lab.query.order_by(Lab.id.asc()).first()
             if not lab:
                 return (
-                    "معمل صدارة للتحاليل الطبية",
+                    "معمل عز لاب  للتحاليل الطبية",
                     "الإسكندرية",
                     "معمل متخصص في جميع التحاليل الطبية والكيميائية"
                 )
@@ -193,7 +193,7 @@ class LaboratoryService:
         except Exception:
             logger.exception("[LaboratoryService.get_current_lab_info] failed")
             return (
-                "معمل صدارة للتحاليل الطبية",
+                "معمل عز لاب للتحاليل الطبية",
                 "الإسكندرية",
                 "معمل متخصص في التحاليل الطبية"
             )    

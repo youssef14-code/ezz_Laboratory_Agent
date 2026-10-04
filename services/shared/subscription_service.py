@@ -163,7 +163,7 @@ class SubscriptionService:
                 send_production_alert(
                     subject="Subscription Deduction Database Failure",
                     body_or_error=e,
-                    context={"laboratory_id": self.laboratory_id, "count": count, "cost": cost},
+                    context={"laboratory_id": subscription.laboratory_id, "count": count, "cost": cost},
                     level="ERROR"
                 )
             except Exception:

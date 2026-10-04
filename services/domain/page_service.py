@@ -89,6 +89,12 @@ class PageService:
         if not resolved_platform_id or not resolved_page_id:
             return None, "بيانات الصفحة غير مكتملة"
 
+        if not laboratory_id:
+            return None, "يرجى اختيار المعمل أولاً"
+
+        if len(resolved_page_id) > 100:
+            return None, "الـ Page ID طويل جداً — تأكد إنك حاطط الـ Page ID وليس الـ Token"
+
         try:
             existing = Page.query.filter_by(platform_id=resolved_platform_id, page_id=resolved_page_id).first()
             if existing:
@@ -106,9 +112,14 @@ class PageService:
             self.platform_id = new_page.platform_id
             self.page_id = new_page.page_id
             return new_page, "تم إضافة الصفحة بنجاح"
-        except IntegrityError:
+        except IntegrityError as e:
             db.session.rollback()
-            return None, "هذه الصفحة مضافة بالفعل لهذه المنصة"
+            err_str = str(e.orig).lower() if e.orig else ""
+            if "duplicate" in err_str or "unique" in err_str:
+                return None, "هذه الصفحة مضافة بالفعل لهذه المنصة"
+            elif "foreign key" in err_str or "cannot be null" in err_str or "1452" in err_str or "1048" in err_str:
+                return None, "يرجى التأكد من اختيار المعمل والمنصة بشكل صحيح"
+            return None, "حدث خطأ في قاعدة البيانات أثناء إضافة الصفحة"
         except Exception:
             db.session.rollback()
             logger.exception("[PageService.create_page] failed")

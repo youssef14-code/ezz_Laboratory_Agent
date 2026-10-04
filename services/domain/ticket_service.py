@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 # ── colours (taken from the Sadara logo) ──────────────────────────────────────
 BLUE = colors.HexColor("#2E7CC4")       # top of the flask square
-INDIGO = colors.HexColor("#3F3F94")     # "صدارة" wordmark
+INDIGO = colors.HexColor("#3F3F94")     # "عز لاب" wordmark
 PURPLE = colors.HexColor("#5B3F8F")     # tagline / bottom of the square
 GREEN = colors.HexColor("#7DB63F")      # liquid inside the flask
 LIGHT_ROW = colors.HexColor("#EEF2FA")  # very light blue-lavender tint
@@ -36,7 +36,7 @@ MUTED = colors.HexColor("#5F6785")
 DARK = colors.HexColor("#1F2340")
 
 # Header text next to the logo
-CLINIC_LINE_1 = "معمل صدارة"
+CLINIC_LINE_1 = "معمل عز لاب"
 CLINIC_LINE_2 = "للتحاليل الطبية الكيميائية"
 
 # ── font & assets ─────────────────────────────────────────────────────────────
